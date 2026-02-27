@@ -1,0 +1,40 @@
+{
+  "name": "bcharts",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:guanyun/bcharts.git",
+  "author": "class moon <57883335+OrphanZhao@users.noreply.github.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "webpack --config webpack.config.js"
+  },
+  "peerDependencies": {
+    "react": ">=19.0.0",
+    "react-dom": ">=19.0.0"
+  },
+  "dependencies": {
+    "@antv/component": "0.8.35",
+    "@antv/g2": "4.1.14",
+    "@antv/g2plot": "2.3.18",
+    "@antv/util": "2.0.17",
+    "@juggle/resize-observer": "^3.3.1",
+    "d3-color": "^3.1.0",
+    "react-error-boundary": "^6.1.1",
+    "react-reconciler": "^0.31.0",
+    "resize-observer-polyfill": "^1.5.1",
+    "warning": "^4.0.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.29.0",
+    "@babel/preset-env": "^7.29.0",
+    "@babel/preset-react": "^7.28.5",
+    "@babel/preset-typescript": "^7.28.5",
+    "babel-loader": "^10.0.0",
+    "css-loader": "^7.1.4",
+    "sass": "^1.97.3",
+    "sass-loader": "^16.0.7",
+    "style-loader": "^4.0.0",
+    "webpack": "^5.105.3",
+    "webpack-cli": "^6.0.1"
+  }
+}
