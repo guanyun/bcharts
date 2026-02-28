@@ -110,5 +110,5 @@ export default function Tooltip(props: ITooltip) {
   chartView.off('tooltip:hide', hideFnc);
   chartView.on('tooltip:hide', hideFnc)
 
-  return isReactTooltip(props) ? <ReactTooltip {...options} >{children}</ReactTooltip> : <TooltipNormal {...props} />;
+  return isReactTooltip(props) ? <ReactTooltip {...options} showMarkers={showMarkers}>{children}</ReactTooltip> : <TooltipNormal {...props} />;
 }
