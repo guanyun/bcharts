@@ -4,7 +4,7 @@ import { InteractionOption } from '@antv/g2/lib/interface';
 import useChart from '../../hooks/useChartView';
 
 
-export interface IInteractionProps extends InteractionOption, React.Props<any> {
+export interface IInteractionProps extends InteractionOption, React.PropsWithChildren<{}> {
   type: string;
   config?: object;
 }

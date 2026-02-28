@@ -16,7 +16,7 @@ import cloneDeep from '../utils/cloneDeep';
 
 registerGeometryLabel('base', GeometryLabel);
 
-export { IBaseGemoProps };
+export type { IBaseGemoProps };
 
 const DEFAULT_SORT_GEOMETRYS = ['line', 'area'];
 

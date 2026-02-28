@@ -20,7 +20,7 @@ registerFacet('matrix', Matrix);
 registerFacet('circle', Circle);
 registerFacet('tree', Tree);
 
-export interface IFacetProps extends FacetCfg<any>, React.Props<any> {
+export interface IFacetProps extends FacetCfg<any>, React.PropsWithChildren<{}> {
   type: "circle" | "rect" | "mirror" | "list" | "matrix" | "tree";
   /** 行标题的样式。 */
   columnTitle?: FacetTitle,

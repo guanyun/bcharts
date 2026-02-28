@@ -35,7 +35,7 @@ export interface ITooltip extends TooltipCfg, React.ComponentProps<any> {
   onHide?: (e?: ITooltipEvent, chart?: Chart) => void;
 }
 
-const TooltipNormal: React.FC<ITooltip> = (props) => {
+function TooltipNormal(props: ITooltip) {
   const { visible = true, children, ...options } = props;
   const chartView = useChartView();
   chartView.getController('tooltip').clear();
@@ -55,7 +55,7 @@ export interface ITooltipEvent {
 }
 
 export default function Tooltip(props: ITooltip) {
-  const { children, triggerOn, onShow, onChange, onHide, lock, linkage, ...options } = props;
+  const { children, triggerOn = 'hover', onShow, onChange, onHide, lock, linkage, showMarkers = false, ...options } = props;
   const chartView = useChartView();
   chartView.removeInteraction('tooltip');
   chartView.removeInteraction('tooltip-click');
@@ -111,9 +111,4 @@ export default function Tooltip(props: ITooltip) {
   chartView.on('tooltip:hide', hideFnc)
 
   return isReactTooltip(props) ? <ReactTooltip {...options} >{children}</ReactTooltip> : <TooltipNormal {...props} />;
-}
-
-Tooltip.defaultProps = {
-  showMarkers: false,
-  triggerOn: 'hover',
 }

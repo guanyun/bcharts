@@ -9,7 +9,7 @@ import uniqId from '@antv/util/lib/unique-id';
 import GroupContext, { withGroupContext } from '../context/group';
 import { EVENTS } from './Base/events';
 
-export interface IGroupProps extends React.Props<any>{
+export interface IGroupProps extends React.PropsWithChildren<{}>{
   [key: string]: any;
   translate?: [number, number];
 }

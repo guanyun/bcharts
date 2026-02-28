@@ -3,7 +3,7 @@ import { withGroupContext } from '../context/group';
 import Helper from './Base/Helper';
 import Base, { IBaseProps } from './Base';
 
-export interface IPolylineProps extends IBaseProps, React.Props<any> {
+export interface IPolylineProps extends IBaseProps, React.PropsWithChildren<{}> {
   // 支持绘图属性
   attrs: {
     points?: [number, number][],

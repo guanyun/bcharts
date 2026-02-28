@@ -2,7 +2,7 @@ import { getOuterHeight, getOuterWidth, modifyCSS } from '@antv/dom-util';
 import HtmlAnnotation from '@antv/component/lib/annotation/html';
 import { HtmlComponentCfg } from '@antv/component/lib/types';
 import { clearDom } from '@antv/component/lib/util/util';
-import ReactDom from 'react-dom';
+import { createRoot, Root } from 'react-dom/client';
 import React from 'react';
 import {isElement, isEqual, isFunction, isString} from '@antv/util';
 import { createDom } from '@antv/g2/lib/util/dom';
@@ -31,7 +31,10 @@ HtmlAnnotation.prototype.render = function() {
       const rst: React.ReactElement = React.isValidElement(content) ? content : content(container);
 
       if (this.preRefreshDeps === undefined || !isEqual(this.preRefreshDeps, refreshDeps)) {
-        ReactDom.render(rst, container);
+        if (!this._reactRoot) {
+          this._reactRoot = createRoot(container) as Root;
+        }
+        this._reactRoot.render(rst);
         this.preRefreshDeps = refreshDeps;
       }
     } else {

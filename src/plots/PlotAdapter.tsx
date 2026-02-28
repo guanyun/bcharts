@@ -42,7 +42,7 @@ interface IAdapterProps {
   [key: string]: any,
 }
 
-const PlotAdapter: React.FC<IAdapterProps> = (props) => {
+function PlotAdapter(props: IAdapterProps) {
   const { chartName, adapter, ...others } = props;
   const adapterFnc = adapter || ((opt) => {
     // 万能plot

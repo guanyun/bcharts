@@ -7,7 +7,7 @@ import cloneDeep from '../../utils/cloneDeep';
 
 import { EVENTS } from './events';
 
-export interface IBaseProps extends React.Props<any> {
+export interface IBaseProps extends React.PropsWithChildren<{}> {
   animate?: {
     /**
      * 目标样式

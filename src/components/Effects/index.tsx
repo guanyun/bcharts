@@ -3,12 +3,14 @@ import _isFunction from '@antv/util/lib/is-function';
 import useChart from '../../hooks/useChartInstance';
 import warn from 'warning';
 
-interface IEffectsProps extends React.Props<any> {}
+interface IEffectsProps {
+  children?: React.ReactNode | ((chart: any) => React.ReactNode);
+}
 
 export default function Effects(props: IEffectsProps) {
   const chart = useChart();
 
-  if (_isFunction(props.children)) {
+  if (typeof props.children === 'function') {
     const res = props.children(chart);
     return React.isValidElement(res) ? res : null;
   }

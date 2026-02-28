@@ -1,25 +1,26 @@
 import React from 'react';
-import { ErrorBoundary } from 'react-error-boundary';
+import { ErrorBoundary, FallbackProps } from 'react-error-boundary';
+import { ErrorInfo } from 'react';
+
 export interface ErrorBoundaryProps {
-  onResetKeysChange?: (prevResetKeys: Array<any>, resetKeys: Array<any>) => void
-  onReset?: () => void
-  onError?: (error: Error, info: { componentStack: string }) => void
-  resetKeys?: Array<any>
-  fallback?: React.ReactElement<any, any> | null
+  onReset?: (details: { reason: 'imperative-api'; args: unknown[] } | { reason: 'keys'; prev: unknown[] | undefined; next: unknown[] | undefined }) => void
+  onError?: (error: unknown, info: ErrorInfo) => void
+  resetKeys?: unknown[]
+  fallback?: React.ReactNode
   [key:string]:any
 }
 
 
-let DefaultErrorFallback = ({ error }) => {
+let DefaultErrorFallback = ({ error }: FallbackProps) => {
   return (
     <div className="bizcharts-error" role="alert">
       <p>BizCharts something went wrong:</p>
-      <pre>{error.message}</pre>
+      <pre>{error instanceof Error ? error.message : String(error)}</pre>
     </div>
   )
 };
 
-export function ErrorFallback(args) {
+export function ErrorFallback(args: FallbackProps) {
   return DefaultErrorFallback(args);
 }
 

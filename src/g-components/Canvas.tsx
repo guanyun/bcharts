@@ -7,7 +7,7 @@ import CanvasContext from '../context/canvas';
 import GroupContext from '../context/group';
 // import pickWithout from '../utils/pickWithout';
 
-export interface ICanvasProps extends React.Props<any> {
+export interface ICanvasProps extends React.PropsWithChildren<{}> {
 
   container?: string | HTMLElement;
   width?: number;
