@@ -1,6 +1,6 @@
 {
   "name": "bcharts",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "基于 BizCharts v4.1.11 魔改的 React 图表库，支持 React 19",
   "main": "./lib/index.js",
   "module": "./lib/index.js",
