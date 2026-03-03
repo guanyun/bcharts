@@ -19,7 +19,7 @@
 通过 Git Tag 安装（本项目未发布至 npm 仓库）：
 
 ```bash
-npm install https://github.com/guanyun/bcharts.git#v1.0.1
+npm install https://github.com/guanyun/bcharts.git#v1.0.x
 ```
 
 ### 依赖要求
@@ -32,39 +32,32 @@ npm install https://github.com/guanyun/bcharts.git#v1.0.1
 ### 使用 G2Plot 图表（推荐）
 
 ```tsx
-import React from 'react';
-import { LineChart, BarChart, PieChart } from 'bcharts';
+import React from "react";
+import { LineChart, BarChart, PieChart } from "bcharts";
 
 function App() {
   const lineData = [
-    { year: '1991', value: 3 },
-    { year: '1992', value: 4 },
-    { year: '1993', value: 3.5 },
-    { year: '1994', value: 5 },
+    { year: "1991", value: 3 },
+    { year: "1992", value: 4 },
+    { year: "1993", value: 3.5 },
+    { year: "1994", value: 5 },
   ];
 
-  return (
-    <LineChart
-      data={lineData}
-      xField="year"
-      yField="value"
-      smooth
-    />
-  );
+  return <LineChart data={lineData} xField="year" yField="value" smooth />;
 }
 ```
 
 ### 使用 G2 声明式语法
 
 ```tsx
-import React from 'react';
-import { Chart, View, Geom, Tooltip, Legend, Axis } from 'bcharts';
+import React from "react";
+import { Chart, View, Geom, Tooltip, Legend, Axis } from "bcharts";
 
 function App() {
   const data = [
-    { type: 'A', value: 10 },
-    { type: 'B', value: 20 },
-    { type: 'C', value: 15 },
+    { type: "A", value: 10 },
+    { type: "B", value: 20 },
+    { type: "C", value: 15 },
   ];
 
   return (
@@ -81,17 +74,17 @@ function App() {
 
 ## 支持的图表类型
 
-| 分类 | 图表 |
-|------|------|
-| 折线图 | LineChart, StepLineChart, TinyLineChart |
+| 分类   | 图表                                                                                                                                                                                |
+| ------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 折线图 | LineChart, StepLineChart, TinyLineChart                                                                                                                                             |
 | 柱状图 | BarChart, ColumnChart, GroupedBarChart, GroupedColumnChart, StackedBarChart, StackedColumnChart, PercentStackedBarChart, PercentStackedColumnChart, RangeBarChart, RangeColumnChart |
-| 面积图 | AreaChart, StackedAreaChart, PercentStackedAreaChart |
-| 饼图 | PieChart, DonutChart |
-| 玫瑰图 | RoseChart, StackedRoseChart, GroupedRoseChart |
-| 散点图 | ScatterChart, BubbleChart |
-| 热力图 | HeatmapChart, DensityHeatmapChart |
-| 迷你图 | TinyLineChart, TinyAreaChart, TinyColumnChart |
-| 其他 | RadarChart, FunnelChart, GaugeChart, LiquidChart, WaterfallChart, WordCloudChart, CalendarChart, TreemapChart, BulletChart, HistogramChart, RingProgressChart, ProgressChart |
+| 面积图 | AreaChart, StackedAreaChart, PercentStackedAreaChart                                                                                                                                |
+| 饼图   | PieChart, DonutChart                                                                                                                                                                |
+| 玫瑰图 | RoseChart, StackedRoseChart, GroupedRoseChart                                                                                                                                       |
+| 散点图 | ScatterChart, BubbleChart                                                                                                                                                           |
+| 热力图 | HeatmapChart, DensityHeatmapChart                                                                                                                                                   |
+| 迷你图 | TinyLineChart, TinyAreaChart, TinyColumnChart                                                                                                                                       |
+| 其他   | RadarChart, FunnelChart, GaugeChart, LiquidChart, WaterfallChart, WordCloudChart, CalendarChart, TreemapChart, BulletChart, HistogramChart, RingProgressChart, ProgressChart        |
 
 ## 核心 API
 
