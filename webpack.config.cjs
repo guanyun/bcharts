@@ -6,6 +6,36 @@ const packageJSON = require('./package.json');
 
 const isAnalyzer = process.env.MODE === 'ANALYZER';
 
+const umdExternals = {
+  react: {
+    root: 'React',
+    commonjs2: 'react',
+    commonjs: 'react',
+    amd: 'react',
+    umd: 'react',
+  },
+  'react-dom': {
+    root: 'ReactDOM',
+    commonjs2: 'react-dom',
+    commonjs: 'react-dom',
+    amd: 'react-dom',
+    umd: 'react-dom',
+  },
+  'react-dom/client': {
+    root: 'ReactDOM',
+    commonjs2: 'react-dom/client',
+    commonjs: 'react-dom/client',
+    amd: 'react-dom/client',
+    umd: 'react-dom/client',
+  },
+};
+
+const esmExternals = {
+  react: 'react',
+  'react-dom': 'react-dom',
+  'react-dom/client': 'react-dom/client',
+};
+
 const baseConfig = {
   entry: './src/index.tsx',
   module: {
@@ -41,28 +71,6 @@ const baseConfig = {
       '@antv/g2': path.resolve(__dirname, './node_modules/@antv/g2'),
     },
   },
-  externals: {
-    react: {
-      root: 'React',
-      commonjs2: 'react',
-      commonjs: 'react',
-      amd: 'react',
-      umd: 'react',
-    },
-    'react-dom': {
-      root: 'ReactDOM',
-      commonjs2: 'react-dom',
-      commonjs: 'react-dom',
-      amd: 'react-dom',
-      umd: 'react-dom',
-    },
-  },
-  output: {
-    path: path.resolve(__dirname, 'dist'),
-    library: 'BizCharts',
-    libraryTarget: 'umd',
-    globalObject: 'this',
-  },
   plugins: [
     new webpack.NormalModuleReplacementPlugin(/@antv\/g2\/(.*)/, (resource) => {
       resource.request = resource.request
@@ -78,8 +86,12 @@ module.exports = [
     ...baseConfig,
     mode: 'development',
     devtool: 'source-map',
+    externals: umdExternals,
     output: {
-      ...baseConfig.output,
+      path: path.resolve(__dirname, 'dist'),
+      library: 'BizCharts',
+      libraryTarget: 'umd',
+      globalObject: 'this',
       filename: 'bizcharts.umd.js',
     },
     plugins: [
@@ -93,8 +105,12 @@ module.exports = [
   {
     ...baseConfig,
     mode: 'production',
+    externals: umdExternals,
     output: {
-      ...baseConfig.output,
+      path: path.resolve(__dirname, 'dist'),
+      library: 'BizCharts',
+      libraryTarget: 'umd',
+      globalObject: 'this',
       filename: 'bizcharts.umd.min.js',
     },
     plugins: [
@@ -116,6 +132,33 @@ module.exports = [
           },
         }),
       ],
+    },
+  },
+  {
+    ...baseConfig,
+    mode: 'production',
+    experiments: {
+      outputModule: true,
+    },
+    externalsType: 'module',
+    externals: esmExternals,
+    output: {
+      path: path.resolve(__dirname, 'lib'),
+      filename: 'index.js',
+      module: true,
+      library: {
+        type: 'module',
+      },
+    },
+    plugins: [
+      ...baseConfig.plugins,
+      new webpack.DefinePlugin({
+        __DEV__: false,
+        __VERSION__: JSON.stringify(packageJSON.version),
+      }),
+    ],
+    optimization: {
+      minimize: false,
     },
   },
 ];
