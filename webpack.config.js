@@ -56,6 +56,13 @@ const baseConfig = {
       amd: 'react-dom',
       umd: 'react-dom',
     },
+    'react-dom/client': {
+      root: 'ReactDOM',
+      commonjs2: 'react-dom/client',
+      commonjs: 'react-dom/client',
+      amd: 'react-dom/client',
+      umd: 'react-dom/client',
+    },
   },
   output: {
     path: path.resolve(__dirname, 'dist'),

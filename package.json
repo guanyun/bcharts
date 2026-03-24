@@ -1,6 +1,6 @@
 {
   "name": "bcharts",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "基于 BizCharts v4.1.11 魔改的 React 图表库，支持 React 19",
   "main": "./lib/index.js",
   "module": "./lib/index.js",
@@ -21,9 +21,12 @@
   "author": "class moon <57883335+OrphanZhao@users.noreply.github.com>",
   "license": "MIT",
   "scripts": {
-    "build": "npm run build:umd && npm run build:lib",
-    "build:umd": "webpack --config webpack.config.js",
-    "build:lib": "tsc || true",
+    "clean": "rm -rf lib dist",
+    "clean:umd": "rm -rf dist",
+    "clean:lib": "rm -rf lib",
+    "build": "npm run clean && npm run build:umd && npm run build:lib",
+    "build:umd": "npm run clean:umd && webpack --config webpack.config.js",
+    "build:lib": "npm run clean:lib && tsc || true",
     "analyze": "MODE=ANALYZER webpack --config webpack.config.js"
   },
   "peerDependencies": {
